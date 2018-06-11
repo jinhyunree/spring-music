@@ -1,5 +1,13 @@
-
+server:
+  port: 8080
 ---
 spring:
   jpa:
     generate-ddl: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:mysql://10.30.141.11:3306/music
+    username: rex
+    password: c1oudc0w
+    driver-class-name: com.mysql.jdbc.Driver
