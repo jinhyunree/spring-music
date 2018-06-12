@@ -1,8 +1,8 @@
-FROM frolvlad/alpine-oraclejdk8:slim
+FROM openjdk:8-jdk-alpine
 MAINTAINER hrjin <hyunlee@bluedigm.com>
 
 VOLUME /tmp
-ARG JAR_FILE
-ADD spring-music.jar spring-music.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/spring-music.jar"
+ADD ../../../spring-music.jar spring-music.jar
+RUN bash -c 'touch /spring-music.jar'
+EXPOSE 8888
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/spring-music.jar"]
