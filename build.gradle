@@ -12,20 +12,18 @@ buildscript {
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE')
     }
 }
 
 apply plugin: 'java'
-
+apply plugin:'application'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'idea'
 
 apply plugin: 'spring-boot'
 
 version = '1.0'
-
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
 
 repositories {
     mavenCentral()
@@ -66,9 +64,19 @@ dependencies {
     testCompile "junit:junit"
 }
 
+mainClassName = 'org.cloudfoundry.samples.music.Application'
+sourceCompatibility = 1.8
+version = '1.0'
+
 jar {
-    baseName = "spring-music"
-    version = "" // omit the version from the war file name
+    manifest {
+        attributes  'Title': 'Spring Music', 'Version': version, 'Main-Class': mainClassName
+    }
+    archiveName 'spring-music.jar'
+    dependsOn configurations.runtime
+    from {
+        configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
+    }
 }
 
 task wrapper(type: Wrapper) {
