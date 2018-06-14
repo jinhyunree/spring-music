@@ -6,8 +6,10 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create
+    database: mysql
+    show-sql: true
   datasource:
-    url: jdbc:mysql://10.30.141.11:3306/music
-    username: rex
-    password: c1oudc0w
+    url: jdbc:mysql://localhost:6033/music?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1234
     driver-class-name: com.mysql.jdbc.Driver

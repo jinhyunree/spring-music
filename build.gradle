@@ -46,9 +46,9 @@ dependencies {
 
     // JPA Persistence
     compile "commons-dbcp:commons-dbcp"
-    runtime "com.h2database:h2"
+//    runtime "com.h2database:h2"
     runtime "mysql:mysql-connector-java"
-    runtime "postgresql:postgresql:9.1-901-1.jdbc4"
+//    runtime "postgresql:postgresql:9.1-901-1.jdbc4"
 
     // Redis Persistence
     compile "redis.clients:jedis"
